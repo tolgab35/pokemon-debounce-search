@@ -1,22 +1,80 @@
 /* =========================
    RESET & BASE
-   ========================= */
+========================= */
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   background: #fff;
-  color: #282b30;
+  color: #1f376f;
+  font-family: "Poetsen One", sans-serif;
 }
 
-/* Text default margin reset */
+p,
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
-p {
+h6 {
   margin: 0;
   padding: 0;
+}
+
+/* =========================
+      HEADER
+========================= */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.header-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-top .logo {
+  margin-bottom: 20px;
+}
+
+.header-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 200px;
+  font-size: 22px;
+  margin-top: 20px;
+}
+
+/* SOL & SAĞ BLOKLAR */
+.search-container,
+.choose-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 260px;
+}
+
+.search-container p,
+.choose-container p {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* INPUT TASARIMI */
+header input,
+header select {
+  width: 240px;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 2px solid #1f376f;
+  border-radius: 18px;
+  text-align: center;
+  outline: none;
+  background: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 }

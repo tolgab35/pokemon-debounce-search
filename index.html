@@ -3,10 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Pokemon API</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <header>
+      <div class="header-top">
+        <img
+          class="logo"
+          src="assets/images/logo.png"
+          width="450"
+          alt="Pokemon Logo"
+        />
+        <img
+          src="assets/images/pokeball.png"
+          width="50"
+          height="50"
+          alt="Pokeball"
+        />
+      </div>
+
+      <div class="header-bottom">
+        <div class="search-container">
+          <p>Search by name:</p>
+          <input
+            type="number"
+            id="searchInput"
+            placeholder="Pokemon ID (1–151)"
+          />
+        </div>
+
+        <div class="choose-container">
+          <p>Filter by rarity:</p>
+          <select id="raritySelect">
+            <option value="">Select rarity</option>
+            <option value="common">Common</option>
+            <option value="rare">Rare</option>
+            <option value="epic">Epic</option>
+            <option value="legendary">Legendary</option>
+            <option value="mythical">Mythical</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
     <script src="script.js"></script>
   </body>
 </html>
