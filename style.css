@@ -38,6 +38,7 @@ header {
 
 .header-top .logo {
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .header-bottom {
