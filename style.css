@@ -49,7 +49,7 @@ header {
   margin-top: 20px;
 }
 
-/* SOL & SAĞ BLOKLAR */
+/* Input Grupları */
 .search-container,
 .choose-container {
   display: flex;
@@ -79,17 +79,18 @@ header select {
   cursor: pointer;
 }
 
-/* MAIN GRID */
+/* =========================
+      MAIN GRID
+========================= */
 .card-grid {
   width: 100%;
   max-width: 900px;
-  margin: 40px auto;
+  margin: 40px auto 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
 
-/* KART BASE */
 .card {
   background: white;
   border-radius: 15px;
@@ -101,7 +102,6 @@ header select {
 
 .card img {
   width: 140px;
-  height: auto;
   display: block;
   margin: 0 auto 10px;
 }
@@ -112,7 +112,7 @@ header select {
   color: #333;
 }
 
-/* Renk çeşitleri */
+/* Kart Renkleri */
 .card[data-color="purple"] {
   border-color: #8f7cef;
 }
@@ -132,7 +132,6 @@ header select {
   border-color: #ff9a58;
 }
 
-/* Hover efekti */
 .card:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
@@ -140,13 +139,110 @@ header select {
 
 /* Responsive */
 @media (max-width: 900px) {
+  .header-bottom {
+    gap: 60px;
+  }
   .card-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
+  .header-bottom {
+    flex-direction: column;
+    gap: 40px;
+  }
   .card-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* =========================
+   DECOR
+========================= */
+.decor-left,
+.decor-right {
+  position: fixed;
+  bottom: 20px;
+  width: 200px;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.decor-left {
+  left: 20px;
+}
+.decor-right {
+  right: 20px;
+}
+
+@media (max-width: 700px) {
+  .decor-left,
+  .decor-right {
+    width: 130px;
+    bottom: 10px;
+  }
+}
+
+/* =========================
+   DIVIDER
+========================= */
+.divider {
+  width: 55%;
+  margin: 40px auto 10px;
+  border: none;
+  border-top: 2px solid #524e4d;
+  opacity: 0.5;
+}
+
+/* =========================
+   PAGINATION
+========================= */
+footer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.pagination {
+  display: flex;
+  gap: 35px;
+  margin-top: 10px;
+}
+
+.page-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.page-item img {
+  width: 30px;
+  transition: 0.2s;
+  opacity: 0.35;
+}
+
+.page-item.active img {
+  opacity: 1;
+}
+
+.page-item span {
+  font-size: 26px;
+  color: #999;
+  font-weight: 600;
+}
+
+.page-item.active span {
+  color: #d00;
+}
+
+.page-item:hover img {
+  transform: scale(1.08);
+  opacity: 1;
+}
+
+.page-item:hover span {
+  color: #d00;
 }
