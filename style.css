@@ -78,3 +78,75 @@ header select {
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
   cursor: pointer;
 }
+
+/* MAIN GRID */
+.card-grid {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* KART BASE */
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px 18px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  border: 3px solid #ddd;
+  transition: 0.2s ease;
+}
+
+.card img {
+  width: 140px;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.card .info p {
+  font-size: 16px;
+  margin: 4px 0;
+  color: #333;
+}
+
+/* Renk çeşitleri */
+.card[data-color="purple"] {
+  border-color: #8f7cef;
+}
+.card[data-color="red"] {
+  border-color: #ff6b6b;
+}
+.card[data-color="yellow"] {
+  border-color: #ffe36e;
+}
+.card[data-color="blue"] {
+  border-color: #65c7ff;
+}
+.card[data-color="green"] {
+  border-color: #9cd97a;
+}
+.card[data-color="orange"] {
+  border-color: #ff9a58;
+}
+
+/* Hover efekti */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
