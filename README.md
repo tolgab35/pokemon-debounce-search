@@ -23,7 +23,9 @@ A fast and interactive Pokémon search application featuring debounce optimizati
 
 ## 🚀 Demo
 
-Simply open `index.html` in your browser to start exploring!
+[Try the live demo](https://pokemon-debounce-search.vercel.app/)
+
+Or simply open `index.html` in your browser to start exploring!
 
 ## 🛠️ Technologies Used
 
@@ -172,7 +174,7 @@ Contributions are welcome! Feel free to:
 
 ## 📝 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available for personal and commercial use.
 
 ## 🙏 Acknowledgments
 
