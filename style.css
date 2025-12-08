@@ -1,6 +1,4 @@
-/* =========================
-   RESET & BASE
-========================= */
+/* Reset & Base */
 body {
   margin: 0;
   padding: 0;
@@ -20,9 +18,7 @@ h6 {
   padding: 0;
 }
 
-/* =========================
-      HEADER
-========================= */
+/* Header */
 header {
   display: flex;
   flex-direction: column;
@@ -50,7 +46,6 @@ header {
   margin-top: 20px;
 }
 
-/* Input Grupları */
 .search-container,
 .choose-container {
   display: flex;
@@ -65,7 +60,7 @@ header {
   text-align: center;
 }
 
-/* INPUT TASARIMI */
+/* Input styles */
 header input,
 header select {
   width: 240px;
@@ -80,9 +75,7 @@ header select {
   cursor: pointer;
 }
 
-/* =========================
-      MAIN GRID
-========================= */
+/* Card Grid */
 .card-grid {
   width: 100%;
   max-width: 900px;
@@ -113,7 +106,7 @@ header select {
   color: #333;
 }
 
-/* Kart Renkleri */
+/* Card colors */
 .card[data-color="purple"] {
   border-color: #8f7cef;
 }
@@ -158,9 +151,7 @@ header select {
   }
 }
 
-/* =========================
-   DECOR
-========================= */
+/* Decorations */
 .decor-left,
 .decor-right {
   position: fixed;
@@ -185,9 +176,7 @@ header select {
   }
 }
 
-/* =========================
-   DIVIDER
-========================= */
+/* Divider */
 .divider {
   width: 55%;
   margin: 40px auto 10px;
@@ -196,9 +185,7 @@ header select {
   opacity: 0.5;
 }
 
-/* =========================
-   PAGINATION
-========================= */
+/* Pagination */
 footer {
   display: flex;
   justify-content: center;

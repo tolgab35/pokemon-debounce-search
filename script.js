@@ -1,22 +1,15 @@
-// ========================
-// GLOBAL STATE
-// ========================
+// Global state
 let allPokemon = [];
 let filteredPokemon = [];
 let currentPage = 1;
 const ITEMS_PER_PAGE = 12;
 
-// ========================
-// DOM ELEMENTS
-// ========================
+// DOM elements
 const grid = document.querySelector(".card-grid");
 const searchInput = document.getElementById("searchInput");
 const raritySelect = document.getElementById("raritySelect");
-const paginationItems = document.querySelectorAll(".page-item");
 
-// ========================
-// TÜRE GÖRE KART RENKLERİ
-// ========================
+// Type colors
 const typeColors = {
   fire: "red",
   water: "blue",
@@ -35,9 +28,7 @@ const typeColors = {
   poison: "purple",
 };
 
-// ========================
-// 1–151 TÜM POKÉMON’U ÇEK
-// ========================
+// Fetch all Pokemon (1-151)
 async function fetchPokemon() {
   for (let id = 1; id <= 151; id++) {
     let res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -48,7 +39,7 @@ async function fetchPokemon() {
       name: data.name,
       image: data.sprites.other["official-artwork"].front_default,
       type: data.types[0].type.name,
-      rarity: generateRarity(), // rastgele rarity
+      rarity: generateRarity(),
       power: data.types[0].type.name,
     });
   }
@@ -57,9 +48,7 @@ async function fetchPokemon() {
   renderPage();
 }
 
-// ========================
-// RARITY OLUŞTURUCU
-// ========================
+// Generate random rarity
 function generateRarity() {
   const rarities = ["common", "rare", "epic", "legendary", "mythical"];
   const weights = [70, 15, 10, 4, 1];
@@ -74,9 +63,7 @@ function generateRarity() {
   return "common";
 }
 
-// ========================
-// KART ÇİZİMİ
-// ========================
+// Render cards
 function renderCards(list) {
   grid.innerHTML = "";
 
@@ -102,9 +89,7 @@ function renderCards(list) {
   });
 }
 
-// ========================
-// SAYFALAMA
-// ========================
+// Pagination
 function renderPage() {
   let start = (currentPage - 1) * ITEMS_PER_PAGE;
   let end = start + ITEMS_PER_PAGE;
@@ -116,18 +101,77 @@ function renderPage() {
 }
 
 function updatePaginationUI() {
-  paginationItems.forEach((item, index) => {
-    if (index + 1 === currentPage) {
-      item.classList.add("active");
+  const totalPages = Math.ceil(filteredPokemon.length / ITEMS_PER_PAGE);
+  const paginationContainer = document.querySelector(".pagination");
+
+  paginationContainer.innerHTML = "";
+
+  const pagesToShow = [];
+
+  if (totalPages <= 7) {
+    for (let i = 1; i <= totalPages; i++) {
+      pagesToShow.push(i);
+    }
+  } else {
+    if (currentPage <= 4) {
+      pagesToShow.push(1, 2, 3, 4, 5, "...", totalPages);
+    } else if (currentPage >= totalPages - 3) {
+      pagesToShow.push(
+        1,
+        "...",
+        totalPages - 4,
+        totalPages - 3,
+        totalPages - 2,
+        totalPages - 1,
+        totalPages
+      );
     } else {
-      item.classList.remove("active");
+      pagesToShow.push(
+        1,
+        "...",
+        currentPage - 1,
+        currentPage,
+        currentPage + 1,
+        "...",
+        totalPages
+      );
+    }
+  }
+
+  pagesToShow.forEach((item) => {
+    if (item === "...") {
+      const dots = document.createElement("span");
+      dots.className = "pagination-dots";
+      dots.textContent = "...";
+      dots.style.display = "flex";
+      dots.style.alignItems = "center";
+      dots.style.color = "#666";
+      dots.style.fontSize = "1.5rem";
+      dots.style.padding = "0 10px";
+      paginationContainer.appendChild(dots);
+    } else {
+      const pageItem = document.createElement("div");
+      pageItem.className = "page-item";
+      if (item === currentPage) {
+        pageItem.classList.add("active");
+      }
+
+      pageItem.innerHTML = `
+        <img src="assets/images/pokeball.png" alt="pokeball" />
+        <span>${item}</span>
+      `;
+
+      pageItem.addEventListener("click", () => {
+        currentPage = item;
+        renderPage();
+      });
+
+      paginationContainer.appendChild(pageItem);
     }
   });
 }
 
-// ========================
-// ARAMA + FİLTRE
-// ========================
+// Apply filters
 function applyFilters() {
   const idVal = Number(searchInput.value);
   const rarityVal = raritySelect.value;
@@ -142,20 +186,9 @@ function applyFilters() {
   renderPage();
 }
 
-// ========================
-// EVENT LISTENERS
-// ========================
+// Event listeners
 searchInput.addEventListener("input", applyFilters);
 raritySelect.addEventListener("change", applyFilters);
 
-paginationItems.forEach((item, index) => {
-  item.addEventListener("click", () => {
-    currentPage = index + 1;
-    renderPage();
-  });
-});
-
-// ========================
-// BAŞLAT
-// ========================
+// Initialize
 fetchPokemon();
